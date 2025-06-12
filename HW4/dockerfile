@@ -1,0 +1,11 @@
+FROM agrigorev/zoomcamp-model:mlops-2024-3.10.13-slim
+
+WORKDIR /app
+
+# Copy your scoring script into the container
+COPY predict.py /app/predict.py
+
+# Install dependencies inside the image
+RUN pip install numpy scikit-learn pandas pyarrow
+
+ENTRYPOINT ["python", "predict.py"]
